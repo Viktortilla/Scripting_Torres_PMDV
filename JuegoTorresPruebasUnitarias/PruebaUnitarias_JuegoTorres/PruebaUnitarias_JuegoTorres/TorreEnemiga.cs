@@ -8,9 +8,9 @@ namespace PruebaUnitarias_JuegoTorres
 {
     internal class TorreEnemiga : Torre
     {
-        public TorreEnemiga(bool vivo, Dictionary<int, int> valoresTorre) : base(vivo, valoresTorre)
+        public TorreEnemiga(bool vivo, Dictionary<string, int> valoresTorre) : base(vivo, valoresTorre)
         {
-            
         }
+
     }
 }

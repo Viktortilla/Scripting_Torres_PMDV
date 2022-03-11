@@ -8,6 +8,6 @@ namespace PruebaUnitarias_JuegoTorres
 {
     internal class Test
     {
-        Jugador joogador = new Jugador(true , Dictionary<2,8>)
+        
     }
 }

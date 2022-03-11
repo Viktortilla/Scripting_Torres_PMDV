@@ -9,13 +9,20 @@ namespace PruebaUnitarias_JuegoTorres
     abstract class Torre
     {
         bool Vivo = true;
-        Dictionary<int, int> ValoresTorre = new Dictionary<int, int>();
+        
+        Dictionary<string, int> ValoresTorre = new Dictionary<string, int>();
 
-        public Torre(bool vivo, Dictionary<int, int> valoresTorre)
+        
+
+        protected Torre(bool vivo, Dictionary<string, int> valoresTorre)
         {
-            Vivo = vivo;
-            ValoresTorre = valoresTorre;
+            Vivo1 = vivo;
+            ValoresTorre1 = valoresTorre;
+            
         }
+
+        public bool Vivo1 { get => Vivo; set => Vivo = value; }
+        public Dictionary<string, int> ValoresTorre1 { get => ValoresTorre; set => ValoresTorre = value; }
         
     }
 }
