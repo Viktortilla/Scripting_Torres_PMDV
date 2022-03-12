@@ -63,7 +63,7 @@ namespace PruebaUnitarias_JuegoTorres
                             TorreJugador["jugador"] = TorreJugador["jugador"] + STorresObjetivo.Peek()[Objetivo][0];
                             STorresObjetivo.Peek()[Objetivo][0] = 0;
                         }
-                        if (TorreJugador["jugador"] <= TorreJugador[Objetivo])
+                        if (TorreJugador["jugador"] <= STorresObjetivo.Peek()[Objetivo][0])
                         {
                             NumeroVidas--;
                         }
@@ -75,7 +75,7 @@ namespace PruebaUnitarias_JuegoTorres
                             TorreJugador["jugador"] = TorreJugador["jugador"] + STorresObjetivo.Peek()[Objetivo][1];
                             STorresObjetivo.Peek()[Objetivo][1] = 0;
                         }
-                        if (TorreJugador["jugador"] <= TorreJugador[Objetivo])
+                        if (TorreJugador["jugador"] <= STorresObjetivo.Peek()[Objetivo][1])
                         {
                             NumeroVidas--;
                         }
@@ -87,7 +87,7 @@ namespace PruebaUnitarias_JuegoTorres
                             TorreJugador["jugador"] = TorreJugador["jugador"] + STorresObjetivo.Peek()[Objetivo][2];
                             STorresObjetivo.Peek()[Objetivo][2] = 0;
                         }
-                        if (TorreJugador["jugador"] <= TorreJugador[Objetivo])
+                        if (TorreJugador["jugador"] <= STorresObjetivo.Peek()[Objetivo][2])
                         {
                             NumeroVidas--;
                         }
@@ -100,6 +100,10 @@ namespace PruebaUnitarias_JuegoTorres
                     if (STorresObjetivo.Peek().Count() == 0)
                     {
                         STorresObjetivo.Pop();
+                    }
+                    if (numeroVidas == 0)
+                    {
+                        vida = false;
                     }
                 }
             }
