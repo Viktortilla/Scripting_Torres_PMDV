@@ -6,104 +6,65 @@ using System.Threading.Tasks;
 
 namespace PruebaUnitarias_JuegoTorres
 {
-    internal class Jugador 
+    internal class Jugador : Torre
     {
-        private bool vida = true;
-        private byte numeroVidas = 3;
-        private Dictionary<string, int> torreJugador = new Dictionary<string, int>();
+        private byte NumeroVidas = 3;
+        Stack<Dictionary<string, int>> sTorres = new Stack<Dictionary<string, int>>();
 
-        public Jugador(bool vida, byte numeroVidas, Dictionary<string, int> torreJugador)
+        public Jugador(bool vivo, Dictionary<string, int> valoresTorre, byte numeroVidas, Stack<Dictionary<string, int>> STorres) : base(vivo, valoresTorre)
         {
-            this.vida = vida;
-            NumeroVidas = numeroVidas;
-            TorreJugador = torreJugador;
-        }
+            STorres = sTorres;
+            NumeroVidas1 = numeroVidas;
+        }   
 
-        public bool Vida { get => vida; set => vida = value; }
-        public byte NumeroVidas { get => numeroVidas; set => numeroVidas = value; }
-        public Dictionary<string, int> TorreJugador { get => torreJugador; set => torreJugador = value; }
+        public byte NumeroVidas1 { get => NumeroVidas; set => NumeroVidas = value; }
+        public Stack<Dictionary<string, int>> STorres { get => sTorres; set => sTorres = value; }
 
-        public void CrearTorreDelJugador()
+        public Jugador InicializarJugador(Stack<Dictionary<string, int>> STorresEnemigas)
         {
-            TorreJugador.Add("jugador", 2);
+            Dictionary<string, int> TorreJugador = new Dictionary<string, int>();
+            Jugador Player = new Jugador(true, TorreJugador, NumeroVidas,STorresEnemigas);
+
+            TorreJugador.Add("jugador",2);
             TorreJugador.Add("bonificacion1", 1);
             TorreJugador.Add("bonificacion2", 2);
-        }
 
-        public void AtacarTorrePropia(string Objetivo)
+            return Player;
+        }
+        public void Atacar(Jugador Player,string Objetivo)
         {
+            if(Player.Vivo1 == true)
+            {
+                if (Player.STorres.Peek().ContainsKey(Objetivo))
+                {
+                    if (Objetivo == "bonificacion1")
+                    {
+                        Player.ValoresTorre1["jugador"] = Player.ValoresTorre1["jugador"] + Player.ValoresTorre1["bonificacion1"];
+                    }
+                    else if (Objetivo == "bonificacion2")
+                    {
+                        Player.ValoresTorre1["jugador"] = Player.ValoresTorre1["jugador"] + Player.ValoresTorre1["bonificacion2"];
+                    }
+                    else
+                    {
+                        if (Player.ValoresTorre1["jugador"] > Player.STorres.Peek()[Objetivo])
+                        {
+                            Player.ValoresTorre1["jugador"] = Player.ValoresTorre1["jugador"] + Player.STorres.Peek()[Objetivo];
+                            Player.STorres.Pop();
+                        }
+                        else
+                        {
+                            Player.NumeroVidas = Player.NumeroVidas--;
+                            if (Player.NumeroVidas == 0)
+                            {
+                                Player.Vivo1 = false;
+                            }
+                        }
+                    }
+                }
+            }
             
-            if (NumeroVidas==0)
-            {
-                vida = false;
-            }
-            if (vida == true)
-            {
-                if (TorreJugador.ContainsKey(Objetivo))
-                {
-                    TorreJugador["jugador"] = TorreJugador["jugador"] + TorreJugador[Objetivo];
-                    TorreJugador[Objetivo] = 0;
-                }
-            }
-        }
-        public void AtacarTorreEnemiga( Stack<Dictionary<string, int[]>> STorresObjetivo,string Objetivo)
-        {
-            if (NumeroVidas == 0)
-            {
-                vida = false;
-            }
-            if (vida == true)
-            {
-                if (STorresObjetivo.Peek().ContainsKey(Objetivo))
-                {
-                    if (STorresObjetivo.Peek()[Objetivo][0] > 0)
-                    {
-                        if (TorreJugador["jugador"] > STorresObjetivo.Peek()[Objetivo][0])
-                        {
-                            TorreJugador["jugador"] = TorreJugador["jugador"] + STorresObjetivo.Peek()[Objetivo][0];
-                            STorresObjetivo.Peek()[Objetivo][0] = 0;
-                        }
-                        if (TorreJugador["jugador"] <= TorreJugador[Objetivo])
-                        {
-                            NumeroVidas--;
-                        }
-                    }
-                    else if(STorresObjetivo.Peek()[Objetivo][1] > 0)
-                    {
-                        if (TorreJugador["jugador"] > STorresObjetivo.Peek()[Objetivo][1])
-                        {
-                            TorreJugador["jugador"] = TorreJugador["jugador"] + STorresObjetivo.Peek()[Objetivo][1];
-                            STorresObjetivo.Peek()[Objetivo][1] = 0;
-                        }
-                        if (TorreJugador["jugador"] <= TorreJugador[Objetivo])
-                        {
-                            NumeroVidas--;
-                        }
-                    }
-                    else if (STorresObjetivo.Peek()[Objetivo][2] > 0)
-                    {
-                        if (TorreJugador["jugador"] > STorresObjetivo.Peek()[Objetivo][2])
-                        {
-                            TorreJugador["jugador"] = TorreJugador["jugador"] + STorresObjetivo.Peek()[Objetivo][2];
-                            STorresObjetivo.Peek()[Objetivo][2] = 0;
-                        }
-                        if (TorreJugador["jugador"] <= TorreJugador[Objetivo])
-                        {
-                            NumeroVidas--;
-                        }
-                    }
-
-                    if(STorresObjetivo.Peek()[Objetivo][0]+ STorresObjetivo.Peek()[Objetivo][1]+ STorresObjetivo.Peek()[Objetivo][2] == 0)
-                    {
-                        STorresObjetivo.Peek().Remove(Objetivo);
-                    }
-                    if (STorresObjetivo.Peek().Count()==0)
-                    {
-                        STorresObjetivo.Pop();
-                    }
-                }
-            }
         }
     }
-
+    
 }
