@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace PruebaUnitarias_JuegoTorres
 {
-    public class Jugador
+    class Jugador
     {
-        private bool vida = true;
-        private byte numeroVidas = 3;
+        private bool vida;
+        private byte numeroVidas;
+        private int nivelTorre;
         private Dictionary<string, int> torreJugador = new Dictionary<string, int>();
 
         public Jugador(bool vida, byte numeroVidas, Dictionary<string, int> torreJugador)
@@ -62,6 +63,7 @@ namespace PruebaUnitarias_JuegoTorres
                         {
                             TorreJugador["jugador"] = TorreJugador["jugador"] + STorresObjetivo.Peek()[Objetivo][0];
                             STorresObjetivo.Peek()[Objetivo][0] = 0;
+
                         }
                         if (TorreJugador["jugador"] <= STorresObjetivo.Peek()[Objetivo][0])
                         {
@@ -74,6 +76,7 @@ namespace PruebaUnitarias_JuegoTorres
                         {
                             TorreJugador["jugador"] = TorreJugador["jugador"] + STorresObjetivo.Peek()[Objetivo][1];
                             STorresObjetivo.Peek()[Objetivo][1] = 0;
+
                         }
                         if (TorreJugador["jugador"] <= STorresObjetivo.Peek()[Objetivo][1])
                         {
@@ -86,6 +89,7 @@ namespace PruebaUnitarias_JuegoTorres
                         {
                             TorreJugador["jugador"] = TorreJugador["jugador"] + STorresObjetivo.Peek()[Objetivo][2];
                             STorresObjetivo.Peek()[Objetivo][2] = 0;
+
                         }
                         if (TorreJugador["jugador"] <= STorresObjetivo.Peek()[Objetivo][2])
                         {
@@ -96,6 +100,7 @@ namespace PruebaUnitarias_JuegoTorres
                     if (STorresObjetivo.Peek()[Objetivo][0] + STorresObjetivo.Peek()[Objetivo][1] + STorresObjetivo.Peek()[Objetivo][2] == 0)
                     {
                         STorresObjetivo.Peek().Remove(Objetivo);
+                        nivelTorre++;
                     }
                     if (STorresObjetivo.Peek().Count() == 0)
                     {
@@ -111,4 +116,5 @@ namespace PruebaUnitarias_JuegoTorres
     }
 
 }
+
 
