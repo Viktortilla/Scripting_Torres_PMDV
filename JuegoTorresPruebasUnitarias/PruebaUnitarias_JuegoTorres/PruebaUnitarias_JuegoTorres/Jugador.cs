@@ -15,7 +15,7 @@ namespace PruebaUnitarias_JuegoTorres
         {
             STorres = sTorres;
             NumeroVidas1 = numeroVidas;
-        }
+        }   
 
         public byte NumeroVidas1 { get => NumeroVidas; set => NumeroVidas = value; }
         public Stack<Dictionary<string, int>> STorres { get => sTorres; set => sTorres = value; }

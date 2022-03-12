@@ -10,7 +10,16 @@ namespace PruebaUnitarias_JuegoTorres
     {
         public TorreEnemiga(bool vivo, Dictionary<string, int> valoresTorre) : base(vivo, valoresTorre)
         {
-        }
 
+        }
+        
+        public Stack<Dictionary<string , int>> InicializarTorresEnemigas()
+        {
+            Stack<Dictionary<string , int>> StackTemporal = new Stack<Dictionary<string , int>>();
+            Dictionary<string , int> Torre1 = new Dictionary<string , int>();
+            
+           
+            return ;
+        }
     }
 }

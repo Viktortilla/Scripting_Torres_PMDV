@@ -10,10 +10,8 @@ namespace PruebaUnitarias_JuegoTorres
     {
         bool Vivo = true;
         
-        Dictionary<string, int> ValoresTorre = new Dictionary<string, int>();
-
+        int [] ValoresTorre = null;
         
-
         protected Torre(bool vivo, Dictionary<string, int> valoresTorre)
         {
             Vivo1 = vivo;
