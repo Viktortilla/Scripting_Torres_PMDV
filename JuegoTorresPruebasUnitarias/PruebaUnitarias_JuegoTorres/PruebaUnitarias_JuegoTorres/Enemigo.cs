@@ -6,23 +6,23 @@ using System.Threading.Tasks;
 
 namespace PruebaUnitarias_JuegoTorres
 {
-    class Enemigo
+    public class Enemigo
     {
-        Stack<Dictionary<string, Array>> STorresEnemigas = new Stack<Dictionary<string, Array>>();
+        Stack<Dictionary<string, int[]>> STorresEnemigas = new Stack<Dictionary<string, int[]>>();
 
-        public Enemigo(Stack<Dictionary<string, Array>> sTorresEnemigas)
+        public Enemigo(Stack<Dictionary<string, int[]>> sTorresEnemigas)
         {
             STorresEnemigas = sTorresEnemigas;
         }
 
-        public Stack<Dictionary<string, Array>> STorresEnemigas1 { get => STorresEnemigas; set => STorresEnemigas = value; }
+        public Stack<Dictionary<string, int[]>> STorresEnemigas1 { get => STorresEnemigas; set => STorresEnemigas = value; }
 
         public void LLenarStackDeTorres()
         {
-            Dictionary<string, Array> Torre1 = new Dictionary<string, Array>();
-            Dictionary<string, Array> Torre2 = new Dictionary<string, Array>();
-            Dictionary<string, Array> Torre3 = new Dictionary<string, Array>();
-            Dictionary<string, Array> Torre4 = new Dictionary<string, Array>();
+            Dictionary<string, int[]> Torre1 = new Dictionary<string, int[]>();
+            Dictionary<string, int[]> Torre2 = new Dictionary<string, int[]>();
+            Dictionary<string, int[]> Torre3 = new Dictionary<string, int[]>();
+            Dictionary<string, int[]> Torre4 = new Dictionary<string, int[]>();
 
             int[] torre1Piso1 = new int[3] { 0, 0, 9 };
             int[] torre1Piso2 = new int[3] { 0, 0, 2 };

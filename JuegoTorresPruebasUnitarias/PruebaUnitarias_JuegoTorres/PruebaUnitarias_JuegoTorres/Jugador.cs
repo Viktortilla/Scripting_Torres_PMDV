@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PruebaUnitarias_JuegoTorres
 {
-    internal class Jugador
+    public class Jugador
     {
         private bool vida = true;
         private byte numeroVidas = 3;
