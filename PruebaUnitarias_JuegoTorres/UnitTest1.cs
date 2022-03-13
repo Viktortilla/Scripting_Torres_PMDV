@@ -88,7 +88,7 @@ namespace PruebaUnitarias_JuegoTorres
             
         }
         [Test]
-        public void ElJUgadorEstaEnUnaTorra()
+        public void ElJugadorEstaEnUnaTorre()
         {
             llenartorre();
             CrearJugador();
