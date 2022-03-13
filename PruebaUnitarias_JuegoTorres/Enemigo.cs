@@ -9,7 +9,7 @@ namespace PruebaUnitarias_JuegoTorres
     public class Enemigo
     {
         Stack<Dictionary<string, int[]>> STorresEnemigas = new Stack<Dictionary<string, int[]>>();
-
+        
         public Enemigo(Stack<Dictionary<string, int[]>> sTorresEnemigas)
         {
             STorresEnemigas = sTorresEnemigas;

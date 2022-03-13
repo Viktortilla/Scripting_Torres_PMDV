@@ -8,9 +8,10 @@ namespace PruebaUnitarias_JuegoTorres
 {
     class Jugador
     {
+        public bool JuegoGanado = false;
         private bool vida;
         private byte numeroVidas;
-        private int nivelTorre;
+        public int nivelTorre=3;
         private Dictionary<string, int> torreJugador = new Dictionary<string, int>();
 
         public Jugador(bool vida, byte numeroVidas, Dictionary<string, int> torreJugador)
@@ -109,6 +110,10 @@ namespace PruebaUnitarias_JuegoTorres
                     if (numeroVidas == 0)
                     {
                         vida = false;
+                    }
+                    if (STorresObjetivo.Count() == 0)
+                    {
+                        JuegoGanado = true; 
                     }
                 }
             }
